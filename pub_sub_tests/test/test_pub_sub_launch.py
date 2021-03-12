@@ -2,7 +2,6 @@ import launch
 import launch_ros
 import launch_ros.actions
 import launch_testing.actions
-import launch_testing_ros
 
 from launch import LaunchDescription
 from launch.actions import IncludeLaunchDescription
@@ -39,7 +38,8 @@ class TestTalkerListenerLink(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         # Initialize the ROS context for the test node
-        rclpy.init()
+        # rclpy.init()
+        pass
 
     @classmethod
     def tearDownClass(cls):
