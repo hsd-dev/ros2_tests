@@ -1,7 +1,7 @@
 from pub_sub_tests.pub_sub import MinimalPublisher, MinimalSubscriber
 import pytest
 import rclpy
-from std_msgs.msg import String
+from std_msgs.msg import String, Int32
 # from rclpy.exceptions import ROSInterruptException
 # from rclpy.executors import SingleThreadedExecutor
 
@@ -31,5 +31,6 @@ def test_add():
 
 def test_pub_sub():
     pub = setup_publisher(topic='/chatter', msg_type=String)
-    sub = setup_subscriber(topic='topic', msg_type=String)
+    sub = setup_subscriber(topic='topic', msg_type=Int32)
     assert pub.publisher_.topic_name == sub.subscription_.topic_name
+    assert pub.publisher_.msg_type == sub.subscription_.msg_type
