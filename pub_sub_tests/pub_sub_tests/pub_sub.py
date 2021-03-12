@@ -32,7 +32,7 @@ class MinimalSubscriber(Node):
         self.subscription_  # prevent unused variable warning
 
     def listener_callback(self, msg):
-        self.get_logger().info('I heard: "%s"' % msg.data)
+        self.get_logger().info('I heard: [%s]' % msg.data)
 
 
 def main(args=None):
@@ -44,14 +44,17 @@ def main(args=None):
     executor = SingleThreadedExecutor()
     executor.add_node(minimal_publisher)
     executor.add_node(minimal_subscriber)
-    executor.spin()
 
-    # Destroy the node explicitly
-    # (optional - otherwise it will be done automatically
-    # when the garbage collector destroys the node object)
-    minimal_publisher.destroy_node()
-    minimal_subscriber.destroy_node()
-    rclpy.shutdown()
+    executor.spin()
+    #try:
+    #    executor.spin()
+    #except KeyboardInterrupt:
+    #    # Destroy the node explicitly
+    #    # (optional - otherwise it will be done automatically
+    #    # when the garbage collector destroys the node object)
+    #    minimal_publisher.destroy_node()
+    #    minimal_subscriber.destroy_node()
+    #    rclpy.shutdown()
 
 
 if __name__ == '__main__':
