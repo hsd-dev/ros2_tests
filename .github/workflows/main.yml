@@ -23,3 +23,6 @@ jobs:
       # Run industrial_ci
       - uses: 'ros-industrial/industrial_ci@master'
         env: ${{ matrix.env }}
+      - run: |
+          pwd
+          ls
